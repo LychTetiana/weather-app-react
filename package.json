@@ -1,18 +1,16 @@
 {
-  "name": "weather-app-react",
+  "name": "react-week-5",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "bootstrap": "5.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-scripts": "4.0.0"
   },
   "devDependencies": {
-    "@babel/runtime": "7.13.8",
-    "typescript": "4.1.3"
+    "@babel/runtime": "7.13.8"
   },
   "scripts": {
     "start": "react-scripts start",
