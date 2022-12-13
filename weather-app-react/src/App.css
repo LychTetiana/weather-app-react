@@ -1,0 +1,129 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+body {
+  background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Fvectors%2Fbackground&psig=AOvVaw3M7FXh0-iAIKCfQmJcjp3F&ust=1670008044251000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCNjB2vOO2fsCFQAAAAAdAAAAABAE");
+  color: blueviolet;
+}
+.card-body,
+.humidity,
+.wind {
+  text-align: center;
+}
+
+.container {
+  max-width: 600px;
+  margin: 30px auto;
+}
+.sun-icon {
+  width: 100px;
+}
+
+.date-today,
+.time {
+  text-align: left;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.temp {
+  color: blueviolet;
+  font-weight: bold;
+}
+
+.bg-white {
+  color: rgb(112, 35, 184);
+  font-weight: bold;
+  text-shadow: 15px;
+}
+
+.date-today {
+  color: blueviolet;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+}
+
+.search-button {
+  background-color: rgba(182, 130, 230, 0.499);
+  color: white;
+  margin: 5px;
+}
+
+a,
+.celsius-fahrenheit {
+  font-weight: normal;
+  font-size: 15px;
+  color: blueviolet;
+}
+
+.advisory {
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.pt-3 {
+  background-image: url("https://img.freepik.com/free-vector/white-abstract-background_23-2148810113.jpg?w=2000");
+}
+
+.weather-forecast-date {
+  background-color: white;
+}
+
+.openSourceCode {
+  align-content: center;
+  padding-top: 25px;
+  margin-left: 250px;
+}
+
+.weather-forecast-temperature-min {
+  opacity: 0.5;
+}
+
+.col-2 {
+  width: 62px;
+  margin: 5px 5px;
+  color: blueviolet;
+}
+.row {
+  margin: 15px 15px 15px 15px;
+  flex-wrap: wrap;
+}
+
