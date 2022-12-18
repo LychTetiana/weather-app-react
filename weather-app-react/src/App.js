@@ -1,8 +1,19 @@
+import React, { useState } from "react";
 import "./App.css";
 import axios from "axios";
 
 
 export default function App() {
+  const [ready, setReady] = useState(false);
+  const [temperature, setTemperature] = useState(null);
+
+  function handleResponse(response) {
+    console.log(response.data);
+    setTemperature(response.data.main.temp);
+    setReady(true);
+  }
+
+  if (weatherData.ready) {
   return (
     <div class="container">
       <div class="card text-center pt-3" style={{ width: "40rem" }}>
@@ -181,4 +192,13 @@ export default function App() {
       </small>
     </div>
   );
+} else {
+  const apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let city = "New York";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(handleResponse);
+  
+  return "Loading...";
 }
+}
+
