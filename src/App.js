@@ -3,14 +3,33 @@ import "./App.css";
 import axios from "axios";
 
 
-export default function App() {
-  const [ready, setReady] = useState(false);
-  const [temperature, setTemperature] = useState(null);
+export default function Weather(props) {
+  const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
-    console.log(response.data);
-    setTemperature(response.data.main.temp);
-    setReady(true);
+    setWeatherData({
+      ready: true,
+      coordinates: response.data.coord,
+      temperature: response.data.main.temp,
+      humidity: response.data.main.humidity,
+      date: new Date(response.data.dt * 1000),
+      description: response.data.weather[0].description,
+      icon: response.data.weather[0].icon,
+      wind: response.data.wind.speed,
+      city: response.data.name,
+    });
+  }
+
+  
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
+
+  function search() {
+    const apiKey = "a1357df929ebtfc24fcd7f75o52d3097";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
   }
 
   if (weatherData.ready) {
@@ -25,6 +44,8 @@ export default function App() {
               size="40"
               class="search shadow-sm"
               id="city-input"
+              autoFocus="on"
+              onChange={handleCityChange}
             />
             <button type="submit" class="search-button" id="weather">
               Search
@@ -45,7 +66,7 @@ export default function App() {
 
           <h1 class="city-name" id="city" style={{ fontSize: "35px" }}>
             {" "}
-            Lviv 0°C
+            {props.data.city}
           </h1>
           <img
             src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png"
@@ -62,7 +83,7 @@ export default function App() {
           ></span>
           <span class="celsius-fahrenheit">
             <a href="#" id="celsius-link">
-              0°C
+            celsius={props.data.temperature}°C
             </a>{" "}
             /
             <a href="#" id="fahrenheit-link">
@@ -71,18 +92,18 @@ export default function App() {
           </span>
 
           <div class="description" id="description">
-            Overcast clouds
+            {props.data.description}
           </div>
         </div>
         <br />
         <div class="humidity">
           <div class="now">
             {" "}
-            Humidity: <span id="humidity">51</span>
+            Humidity: <span id="humidity">{props.data.humidity}</span>
             <strong> %</strong>
             <br />
-            Wind: <span id="wind">5</span>
-            <strong> mph</strong>
+            Wind: <span id="wind">{props.data.wind}</span>
+            <strong> km/h</strong>
           </div>
         </div>
 
@@ -193,11 +214,7 @@ export default function App() {
     </div>
   );
 } else {
-  const apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let city = "New York";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(handleResponse);
-  
+  search();
   return "Loading...";
 }
 }
